@@ -1,4 +1,4 @@
-public class TestingBSTLL {
+/**public class TestingBSTLL {
     public static void main(String[] args) {
         BinarySearchTree tree = new BinarySearchTree();
 
@@ -12,7 +12,7 @@ public class TestingBSTLL {
         tree.insert(80);
 
         // Search for a specific node
-        Node result = tree.search(4);
+        Node result = tree.search(30);
         if (result != null) {
             System.out.println("Node found: " + result.key);
         } else {
@@ -20,3 +20,4 @@ public class TestingBSTLL {
         }
     }
 }
+**/

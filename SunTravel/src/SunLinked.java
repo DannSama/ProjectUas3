@@ -1,5 +1,4 @@
 import java.util.LinkedList;
-
 public class SunLinked {
     private LinkedList<Ticket> tickets;
     private int ticketCount;
@@ -8,11 +7,13 @@ public class SunLinked {
         tickets = new LinkedList<>();
         ticketCount = 0;
     }
+    BinarySearchTree bst = new BinarySearchTree();
 
     public void bookTicket(String passengerName, int seatNumber) {
         Ticket ticket = new Ticket(passengerName, seatNumber);
         tickets.add(ticket);
         ticketCount++;
+        bst.insert(4);
     }
 
     public void cancelTicket(int seatNumber) {

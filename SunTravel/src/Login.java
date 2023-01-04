@@ -9,7 +9,12 @@ public class Login extends PersonalData {
     }
 
     public void SignIn(){
-
+        System.out.print("Username : ");
+        Username = read.next();
+        System.out.print("E-mail   : ");
+        Email = read.next();
+        System.out.print("Password : ");
+        Pass = read.next();
     }
 
     public boolean login(){

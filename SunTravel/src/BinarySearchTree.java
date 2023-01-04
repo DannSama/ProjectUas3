@@ -1,10 +1,11 @@
-/**class node {
-    int key;
+class Node {
+    SunLinked sunbus;
+    int namae;
     Node left;
     Node right;
 
-    public Node(int key) {
-        this.key = key;
+    public Node(int namae) {
+        this.namae = namae;
     }
 }
 
@@ -20,19 +21,21 @@ class BinarySearchTree {
         }
 //
         Node current = root;
+        Node parent = null;
         while (true) {
-            if (key < current.key) {
-                if (current.left == null) {
-                    current.left = newNode;
-                    return;
-                }
+            parent = current;
+            if (key < current.namae) {
                 current = current.left;
-            } else {
-                if (current.right == null) {
-                    current.right = newNode;
+                if (current == null) {
+                    parent.left = newNode;
                     return;
                 }
+            } else {
                 current = current.right;
+                if (current == null) {
+                    parent.right = newNode;
+                    return;
+                }
             }
         }
     }
@@ -41,9 +44,9 @@ class BinarySearchTree {
     public Node search(int key) {
         Node current = root;
         while (current != null) {
-            if (current.key == key) {
+            if (current.namae == key) {
                 return current;
-            } else if (key < current.key) {
+            } else if (key < current.namae) {
                 current = current.left;
             } else {
                 current = current.right;
@@ -52,4 +55,3 @@ class BinarySearchTree {
         return null;
     }
 }
-**/
