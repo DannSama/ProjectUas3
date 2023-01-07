@@ -1,22 +1,35 @@
+import java.util.Scanner;
+import java.util.Comparator;
 public class Main {
     public static void main(String[] args) {
-        BinarySearchTree tree = new BinarySearchTree();
+        Scanner read = new Scanner(System.in);
+        // Create a comparator to compare strings alphabetically
+        Comparator<String> comparator = new Comparator<String>() {
+            public int compare(String s1, String s2) {
+                return s1.compareTo(s2);
+            }
+        };
 
-        // Insert some nodes into the tree
-        tree.insert(50);
-        tree.insert(30);
-        tree.insert(20);
-        tree.insert(40);
-        tree.insert(70);
-        tree.insert(60);
-        tree.insert(80);
+        BinarySearchTree tree = new BinarySearchTree(comparator);
+        SunLinked sunny = new SunLinked();
 
-        // Search for a specific node
-        Node result = tree.search(4);
+        // Insert some names into the tree
+        tree.insert("Alice");
+        tree.insert("Bob");
+        tree.insert("Charlie");
+        tree.insert("David");
+        tree.insert("Eve");
+        tree.insert("Frank");
+        tree.insert("Greta");
+        sunny.bookTicket("abdan", 4);
+
+        // Search for a specific name
+        System.out.print("enter passanger name : ");
+        Node result = tree.search(read.next());
         if (result != null) {
-            System.out.println("Node found: " + result.namae);
+            System.out.println("Name found: " + result.name);
         } else {
-            System.out.println("Node not found.");
+            System.out.println("Name not found.");
         }
     }
 }

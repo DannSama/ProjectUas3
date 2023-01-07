@@ -1,52 +1,61 @@
+import java.util.Comparator;
+import java.util.Scanner;
+
 class Node {
-    SunLinked sunbus;
-    int namae;
+    String name;
     Node left;
     Node right;
 
-    public Node(int namae) {
-        this.namae = namae;
+
+    public Node(String name) {
+        this.name = name;
     }
 }
 
 class BinarySearchTree {
     Node root;
+    Comparator<String> comparator;
+
+    public BinarySearchTree(Comparator<String> comparator) {
+        this.comparator = comparator;
+    }
+
+    public BinarySearchTree() {
+    }
 
     // Insert a new node into the tree
-    public void insert(int key) {
-        Node newNode = new Node(key);
+    public void insert(String name) {
+        Node newNode = new Node(name);
         if (root == null) {
             root = newNode;
             return;
         }
-//
+
         Node current = root;
-        Node parent = null;
         while (true) {
-            parent = current;
-            if (key < current.namae) {
+            if (comparator.compare(name, current.name) < 0) {
+                if (current.left == null) {
+                    current.left = newNode;
+                    return;
+                }
                 current = current.left;
-                if (current == null) {
-                    parent.left = newNode;
-                    return;
-                }
             } else {
-                current = current.right;
-                if (current == null) {
-                    parent.right = newNode;
+                if (current.right == null) {
+                    current.right = newNode;
                     return;
                 }
+                current = current.right;
             }
         }
     }
 
-    // Search for a node with a specific key in the tree
-    public Node search(int key) {
+    // Search for a node with a specific name in the tree
+    public Node search(String name) {
         Node current = root;
         while (current != null) {
-            if (current.namae == key) {
+            if (current.name.equals(name)) {
                 return current;
-            } else if (key < current.namae) {
+            } else if (comparator.compare(name, current.name) < 0) {
                 current = current.left;
             } else {
                 current = current.right;
@@ -55,3 +64,4 @@ class BinarySearchTree {
         return null;
     }
 }
+

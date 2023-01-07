@@ -37,7 +37,7 @@ class BinarySearchTree {
         }
     }
 
-    // Search for a node with a specific key in the tree
+    //Search for a node with a specific key in the tree
     public Node search(int key) {
         Node current = root;
         while (current != null) {

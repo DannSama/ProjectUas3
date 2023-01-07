@@ -1,3 +1,4 @@
+import java.util.Comparator;
 import java.util.LinkedList;
 public class SunLinked {
     private LinkedList<Ticket> tickets;
@@ -7,13 +8,18 @@ public class SunLinked {
         tickets = new LinkedList<>();
         ticketCount = 0;
     }
-    BinarySearchTree bst = new BinarySearchTree();
+    Comparator<String> comparator = new Comparator<String>() {
+        public int compare(String s1, String s2) {
+            return s1.compareTo(s2);
+        }
+    };
+   BinarySearchTree bst = new BinarySearchTree();
 
     public void bookTicket(String passengerName, int seatNumber) {
         Ticket ticket = new Ticket(passengerName, seatNumber);
         tickets.add(ticket);
         ticketCount++;
-        bst.insert(4);
+        bst.insert(passengerName);
     }
 
     public void cancelTicket(int seatNumber) {
